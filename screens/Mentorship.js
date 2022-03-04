@@ -17,7 +17,11 @@ export default function Mentorship({navigation}){
               height: '100%'
             }}
         />
-          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Welcome to New Beginnings!</Text>  
+          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Welcome to New Beginnings!</Text>
+          <Box color = "#a85b32" txt="In various studies, mentorship has proven to significantly increase the likelihood of previously incarcerated people getting jobs. One program, Ready4Work,
+          shown that mentored participants were twice as likely to get a job than their non-mentored couterparts. 
+          Additionally participants who met with mentors were 35% less likely to reoffend."/>
+          <Box color = "##ffffff" txt="Interested in mentoring? Reach out to us at newbeginnings.innb@gmail.com (Fill out contact form?)"/>
         </View>
       </ScrollView>
       )
