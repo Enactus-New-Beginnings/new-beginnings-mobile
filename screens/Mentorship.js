@@ -18,6 +18,7 @@ export default function Mentorship({navigation}){
             }}
         />
           <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Welcome to New Beginnings!</Text>  
+          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Hello World</Text>
         </View>
       </ScrollView>
       )

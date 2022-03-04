@@ -16,7 +16,6 @@ export default function Home({navigation}){
   const [password, setPassword] = React.useState("")
   const [name, setName] = React.useState("")
   const [location, setLocation] = React.useState("")
-
   const signUpUser = ()=>{
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

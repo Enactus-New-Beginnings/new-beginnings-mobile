@@ -7,6 +7,7 @@ import Mentorship from './screens/Mentorship'
 import Employment from './screens/Employment'
 import Resources from './screens/Resources'
 import Profile from './screens/Profile'
+import Videos from './screens/Videos'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { LinearGradient } from 'expo-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -89,6 +90,7 @@ export default function App() {
           <Drawer.Screen name="Employment" component={Employment}/>
           <Drawer.Screen name="Resources" component={Resources}/>
           <Drawer.Screen name="Profile" component={Profile}/>
+          <Drawer.Screen name="Videos" component={Videos}/>
         </Drawer.Navigator>
       </NavigationContainer>
     );
