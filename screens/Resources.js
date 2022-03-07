@@ -8,7 +8,6 @@ export default function Resources({navigation}){
     
   const [data, setData] = useState([]); //for fetching data
   const [tableData, setTableData] = useState([]);
-  const [loaded, setLoaded] = useState(false)
 
   const fetchData = async () => {
     const resp = await fetch("https://apis.yinftw.com/nb/resources/housing");
@@ -20,7 +19,6 @@ export default function Resources({navigation}){
     })
    // console.log(table)
     setTableData(table)
-    setLoaded(true) 
   };
 
   useEffect(() => {
@@ -30,7 +28,7 @@ export default function Resources({navigation}){
 
     return (
       <React.Fragment>
-          {tableData.length==0?<Text>Loading...</Text>:<CustomTable tableData={tableData}/>}
+          {tableData.length==0?<Text>Loading...</Text>:<CustomTable tableData={tableData} fullData={data}/>}
       </React.Fragment>
     );
   }
