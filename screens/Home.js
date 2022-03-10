@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions} from '
 import Box from '../components/Box'
 import { LinearGradient } from 'expo-linear-gradient';
 import { firebase } from '../firebase'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import {useAuthState} from 'react-firebase-hooks/auth';
 
@@ -17,11 +17,8 @@ export default function Home({navigation}){
   const [password, setPassword] = React.useState("")
   const [name, setName] = React.useState("")
   const [location, setLocation] = React.useState("")
-<<<<<<< HEAD
-=======
   const [user, loading, error] = useAuthState(auth); 
 
->>>>>>> 32a5f72eef187f45f7e350791beb02be0506b66c
   const signUpUser = ()=>{
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -55,6 +52,14 @@ export default function Home({navigation}){
     });
   }
 
+  const signOutUser=()=>{
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
     return (
         <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'orange'}}>
 
@@ -68,29 +73,35 @@ export default function Home({navigation}){
                 height: '100%'
               }}
         />   
-
-        <Box color={"#ff8575"} title="Welcome to New Beginnings!" txt="Sign in or sign up for an account below to access personalized resources and mentorship programs near your location. "/>
-        <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email}/>  
-        <TextInput style={styles.input} placeholder="Password" onChangeText={setPassword} value={password}/>
-
       {user ?
-      <View/>:
+      <View>
+         <Box color={"#ff8575"} title="Welcome back to New Beginnings!" txt="Profile page coming soon..."/>
+         <TouchableOpacity style={styles.button} onPress={signOutUser}>
+            <Text style={{color: 'white'}}>Sign Out</Text>
+          </TouchableOpacity>
+      </View>:
       (loginState===0?
-        <View> 
+        <View style={{ flex: 1, alignItems: 'center'}}> 
+           <Box color={"#ff8575"} title="Welcome to New Beginnings!" txt="Sign in or sign up for an account below to access personalized resources and mentorship programs near your location. "/>
+          <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email}/>  
+          <TextInput style={styles.input} placeholder="Password" secureTextEntry onChangeText={setPassword} value={password}/>
           <TouchableOpacity style={styles.button} onPress={loginUser}>
             <Text style={{color: 'white'}}>Log In</Text>
           </TouchableOpacity>
           <Text style={{marginTop: '5%', marginLeft: '5%',  marginRight: '5%'}}>Don't have an account? <Text onPress={()=> setLoginState(1)} style = {{ color: 'blue' }}>Sign Up</Text></Text>
-        </View>)
+        </View>
         :
-        <View>
+        <View style={{ flex: 1, alignItems: 'center'}}>
+           <Box color={"#ff8575"} title="Welcome to New Beginnings!" txt="Sign in or sign up for an account below to access personalized resources and mentorship programs near your location. "/>
+          <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email}/>  
+          <TextInput style={styles.input} placeholder="Password" secureTextEntry onChangeText={setPassword} value={password}/>
           <TextInput style={styles.input} placeholder="Name" onChangeText={setName} value={name}/>  
           <TextInput style={styles.input} placeholder="Location" onChangeText={setLocation} value={location}/>  
           <TouchableOpacity style={styles.button} onPress={signUpUser}>
             <Text style={{color: 'white'}}>Sign Up</Text>
           </TouchableOpacity>
           <Text style={{marginTop: '5%', marginLeft: '5%',  marginRight: '5%'}}>Already have an account? <Text onPress={()=> setLoginState(0)} style = {{ color: 'blue' }}>Log In</Text></Text>
-        </View>
+        </View>)
         }
         </View>
       )
