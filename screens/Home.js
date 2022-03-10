@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { firebase } from '../firebase'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
+import {useAuthState} from 'react-firebase-hooks/auth';
 
 const auth = getAuth(firebase)
 const db = getDatabase(firebase)
@@ -16,6 +17,11 @@ export default function Home({navigation}){
   const [password, setPassword] = React.useState("")
   const [name, setName] = React.useState("")
   const [location, setLocation] = React.useState("")
+<<<<<<< HEAD
+=======
+  const [user, loading, error] = useAuthState(auth); 
+
+>>>>>>> 32a5f72eef187f45f7e350791beb02be0506b66c
   const signUpUser = ()=>{
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -67,13 +73,15 @@ export default function Home({navigation}){
         <TextInput style={styles.input} placeholder="Email" onChangeText={setEmail} value={email}/>  
         <TextInput style={styles.input} placeholder="Password" onChangeText={setPassword} value={password}/>
 
-      {loginState===0?
+      {user ?
+      <View/>:
+      (loginState===0?
         <View> 
           <TouchableOpacity style={styles.button} onPress={loginUser}>
             <Text style={{color: 'white'}}>Log In</Text>
           </TouchableOpacity>
           <Text style={{marginTop: '5%', marginLeft: '5%',  marginRight: '5%'}}>Don't have an account? <Text onPress={()=> setLoginState(1)} style = {{ color: 'blue' }}>Sign Up</Text></Text>
-        </View>
+        </View>)
         :
         <View>
           <TextInput style={styles.input} placeholder="Name" onChangeText={setName} value={name}/>  
