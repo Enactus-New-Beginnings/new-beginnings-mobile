@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { View, ScrollView, Text} from 'react-native';
+import { View, ScrollView, Text, Button} from 'react-native';
 import Box from '../components/Box'
 import { LinearGradient } from 'expo-linear-gradient';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 export default function Videos({navigation}){
-    return (
-      <ScrollView>     
+    const [playing, setPlaying] = React.useState(false);
+    const togglePlaying = () => {
+    etPlaying((prev) => !prev);
+    }
+    return (   
         <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'orange'}}>
         <LinearGradient
           colors={['rgba(255,255,255,0.9)', 'transparent']}
@@ -17,8 +21,24 @@ export default function Videos({navigation}){
               height: '100%'
             }}
         />
-          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Welcome to New Beginnings!</Text>  
+          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Welcome to New Beginnings!</Text>
+          <View style={{height:'100%'}}>
+
+          <YoutubePlayer
+            height={300}
+            width= {400}
+            play={false}
+            videoId={'cTf1vRTVMbQ'}
+          /> 
+        
+          <YoutubePlayer
+            height={300}
+            width= {400}
+            play={false}
+            videoId={'jJddYjx_Bq0'}
+          /> 
+
         </View>
-      </ScrollView>
+        </View>
       )
 }
