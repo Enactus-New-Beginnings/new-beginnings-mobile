@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Button } from 're
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import Modal from "react-native-modal";
 
-export default class ExampleFour extends Component {
+export default class CustomTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
