@@ -3,6 +3,7 @@ import { Text, Button, StyleSheet, ScrollView, View, TouchableOpacity } from 're
 import { useState, useEffect } from "react";
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import Modal from "react-native-modal";
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Resources({navigation}){
@@ -88,11 +89,11 @@ export default function Resources({navigation}){
     return (
       <ScrollView style={styles.container}>
         <Modal isVisible={showModal} swipeDirection="down">
-          <View style={{ flex: 1, backgroundColor: 'white', borderRadius: 25 }}>
+          <View style={{ flex: 1, backgroundColor: 'white', borderRadius: 25, alignItems: 'center' }}>
             <Text style={{margin: '5%', paddingTop: '3%', fontWeight: 'bold', fontSize: 20}}>{modalTitle}</Text>
 
             <Text style={{margin: '5%'}}>{modalText}</Text>
-            <Button title="OK" onPress={()=>{setShow(false)} }/>
+            <Button title="   OK   " onPress={()=>{setShow(false)} }/>
           </View>
         </Modal>
         <Table borderStyle={{borderWidth: 1}}>
@@ -115,10 +116,25 @@ export default function Resources({navigation}){
 
     return (
       <React.Fragment>
-        <Button title="Food" onPress={()=>{makeTable(foodData)}}>Food</Button>
-        <Button title="Clothing" onPress={()=>{makeTable(clothData)}}>Clothing</Button>
-        <Button title="Shelter" onPress={()=>{makeTable(houseData)}}>Shelter</Button>
+        <View style={{ flex: 1, paddingTop: '10%' }}>
+        <LinearGradient
+          colors={['transparent', 'rgba(255,255,255,0.9)']}
+          style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: 0,
+              height: '100%'
+            }}
+        />
+       <Text style={{textAlign: 'center', padding: '5%'}}>Tap on a resource name for more information, including contact info.</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingBottom: '2%'}}>
+        <Button color={tableData.length===foodData.length?"#009c17":"#2196F3"} title="Food" onPress={()=>{makeTable(foodData)}}>Food</Button>
+        <Button color={tableData.length===clothData.length?"#009c17":"#2196F3"} title="Clothing" onPress={()=>{makeTable(clothData)}}>Clothing</Button>
+        <Button color={tableData.length===houseData.length?"#009c17":"#2196F3"} title="Shelter" onPress={()=>{makeTable(houseData)}}>Shelter</Button>
+        </View>
         {tableData.length==0?<Text>Loading...</Text>:returnTable()}
+        </View>
       </React.Fragment>
     );
 }

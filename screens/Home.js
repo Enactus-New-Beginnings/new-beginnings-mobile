@@ -64,7 +64,7 @@ export default function Home({navigation}){
         <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'orange'}}>
 
         <LinearGradient
-            colors={['rgba(255,255,255,0.9)', 'transparent']}
+            colors={['transparent', 'rgba(255,255,255,0.9)']}
             style={{
                 position: 'absolute',
                 left: 0,
@@ -72,7 +72,8 @@ export default function Home({navigation}){
                 top: 0,
                 height: '100%'
               }}
-        />   
+        />  
+      <View style={{paddingTop: '10%'}}>
       {user ?
       <View>
          <Box color={"#ff8575"} title="Welcome back to New Beginnings!" txt="Profile page coming soon..."/>
@@ -103,6 +104,7 @@ export default function Home({navigation}){
           <Text style={{marginTop: '5%', marginLeft: '5%',  marginRight: '5%'}}>Already have an account? <Text onPress={()=> setLoginState(0)} style = {{ color: 'blue' }}>Log In</Text></Text>
         </View>)
         }
+        </View> 
         </View>
       )
 }

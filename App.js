@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './screens/Home'
 import Mentorship from './screens/Mentorship'
-import Employment from './screens/Employment'
 import Resources from './screens/Resources'
-import Profile from './screens/Profile'
 import Videos from './screens/Videos'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { LinearGradient } from 'expo-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const slides = [
   {
@@ -43,7 +42,7 @@ const slides = [
   }
 ];
 
-const Drawer = createDrawerNavigator()
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   const [sliderDone, setSliderDone] = React.useState(false)
@@ -84,14 +83,36 @@ export default function App() {
   if(sliderDone){
     return (
       <NavigationContainer>
-        <Drawer.Navigator>
-          <Drawer.Screen name="Home" component={Home}/>
-          <Drawer.Screen name="Mentorship" component={Mentorship}/>
-          <Drawer.Screen name="Employment" component={Employment}/>
-          <Drawer.Screen name="Resources" component={Resources}/>
-          <Drawer.Screen name="Profile" component={Profile}/>
-          <Drawer.Screen name="Videos" component={Videos}/>
-        </Drawer.Navigator>
+        <Tab.Navigator
+         screenOptions={{
+          headerShown: false
+        }}
+        >
+          <Tab.Screen name="Home" options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }} component={Home}/>
+          <Tab.Screen name="Mentorship" options={{
+          tabBarLabel: 'Mentorship',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="teach" color={color} size={size} />
+          ),
+        }} component={Mentorship}/>
+          <Tab.Screen name="Resources" options={{
+          tabBarLabel: 'Resources',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="book-search" color={color} size={size} />
+          ),
+        }} component={Resources}/>
+          <Tab.Screen name="Videos" options={{
+          tabBarLabel: 'Videos',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="video" color={color} size={size} />
+          ),
+        }} component={Videos}/>
+        </Tab.Navigator>
       </NavigationContainer>
     );
   } else {
