@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions} from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Dimensions, ImageBackground } from 'react-native';
 import Box from '../components/Box'
 import { LinearGradient } from 'expo-linear-gradient';
 import { firebase } from '../firebase'
@@ -9,6 +9,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 
 const auth = getAuth(firebase)
 const db = getDatabase(firebase)
+const image = { uri: "https://i.imgur.com/22nmNA1.png" };
 
 export default function Home({navigation}){
   //State 0 is log in, 1 is sign up
@@ -62,7 +63,8 @@ export default function Home({navigation}){
 
     return (
         <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'orange'}}>
-
+      <ImageBackground source={image} resizeMode="cover" style={{flex: 1,
+    justifyContent: "flex-end",}}>
         <LinearGradient
             colors={['transparent', 'rgba(255,255,255,0.9)']}
             style={{
@@ -105,6 +107,7 @@ export default function Home({navigation}){
         </View>)
         }
         </View> 
+        </ImageBackground>
         </View>
       )
 }

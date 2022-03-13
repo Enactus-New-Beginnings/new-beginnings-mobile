@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Text, Button, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, Text, Button, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
 import { useState, useEffect } from "react";
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import Modal from "react-native-modal";
-import { LinearGradient } from 'expo-linear-gradient';
-
 
 export default function Resources({navigation}){
  
@@ -117,23 +115,16 @@ export default function Resources({navigation}){
     return (
       <React.Fragment>
         <View style={{ flex: 1, paddingTop: '10%' }}>
-        <LinearGradient
-          colors={['transparent', 'rgba(255,255,255,0.9)']}
-          style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              top: 0,
-              height: '100%'
-            }}
-        />
        <Text style={{textAlign: 'center', padding: '5%'}}>Tap on a resource name for more information, including contact info.</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingBottom: '2%'}}>
         <Button color={tableData.length===foodData.length?"#009c17":"#2196F3"} title="Food" onPress={()=>{makeTable(foodData)}}>Food</Button>
         <Button color={tableData.length===clothData.length?"#009c17":"#2196F3"} title="Clothing" onPress={()=>{makeTable(clothData)}}>Clothing</Button>
         <Button color={tableData.length===houseData.length?"#009c17":"#2196F3"} title="Shelter" onPress={()=>{makeTable(houseData)}}>Shelter</Button>
         </View>
-        {tableData.length==0?<Text>Loading...</Text>:returnTable()}
+        {tableData.length==0?<View>
+          <Text style={{textAlign:"center", fontWeight: 'bold', fontSize: 20, marginTop: '5%', marginBottom: '5%'}}>Loading...</Text>
+            <ActivityIndicator size="large" color="#0000ff"/>
+          </View>:returnTable()}
         </View>
       </React.Fragment>
     );
