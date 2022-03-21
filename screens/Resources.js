@@ -7,9 +7,9 @@ import Modal from "react-native-modal";
 export default function Resources({navigation}){
  
   const[data, setData] = useState([]);
-  const [houseData, setHouse] = useState([]); //for fetching data
-  const [foodData, setFood] = useState([]); //for fetching data
-  const [clothData, setCloth] = useState([]); //for fetching data
+  const [houseData, setHouse] = useState([]);
+  const [foodData, setFood] = useState([]);
+  const [clothData, setCloth] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [modalTitle, setTitle] = useState("")
   const [modalText, setText] = useState("")
@@ -39,8 +39,6 @@ export default function Resources({navigation}){
     setHouse(houseData);
 
     makeTable(houseData)
-   // console.log(table)
-    
   };
  
   useEffect(() => {
