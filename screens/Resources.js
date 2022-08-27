@@ -27,11 +27,11 @@ export default function Resources({navigation}){
     console.log(table)
   }
   const fetchData = async () => {
-    const housing = await fetch("https://apis.yinftw.com/nb/resources/housing");
+    const housing = await fetch("https://us-central1-newbeginnings-7fed9.cloudfunctions.net/widgets/resources/housing");
     let houseData = await housing.json();
-    const food = await fetch("https://apis.yinftw.com/nb/resources/food");
+    const food = await fetch("https://us-central1-newbeginnings-7fed9.cloudfunctions.net/widgets/resources/food");
     let foodData = await food.json();
-    const clothing = await fetch("https://apis.yinftw.com/nb/resources/clothing");
+    const clothing = await fetch("https://us-central1-newbeginnings-7fed9.cloudfunctions.net/widgets/resources/clothing");
     let clothData = await clothing.json();
  
     setFood(foodData);
