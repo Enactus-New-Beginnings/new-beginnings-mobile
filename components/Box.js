@@ -1,3 +1,10 @@
+/* -----------
+GENERAL USABLE COMPONENT - PLEASE DO NOT EDIT UNLESS YOU WISH TO MAKE APPWIDE CHANGES!
+You can view documentation for this component here: https://yin4thewin.gitbook.io/new-beginnings/mobile-app/project-components/box 
+Thanks! 
+-Franklin
+--------------*/
+
 import * as React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
